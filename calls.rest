@@ -12,11 +12,6 @@ GET http://{{host}}/
 
 ###
 
-# Get all items
-GET http://{{host}}/items/
-
-###
-
 # Get all items for user
 GET http://{{host}}/items/{{userid}}
 
