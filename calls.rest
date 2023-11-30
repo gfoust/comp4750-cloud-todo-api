@@ -1,0 +1,51 @@
+@hostname = 52.207.196.159
+@port = 8000
+@host = {{hostname}}:{{port}}
+@userid = gfoust
+
+@timestamp = 1697732259881
+
+###
+
+# Make sure the server is running
+GET http://{{host}}/
+
+###
+
+# Get all items
+GET http://{{host}}/items/
+
+###
+
+# Get all items for user
+GET http://{{host}}/items/{{userid}}
+
+###
+
+# Get specific item
+GET http://{{host}}/items/{{userid}}/{{timestamp}}
+
+###
+
+# Create new item
+POST http://{{host}}/items/{{userid}}
+Content-Type: application/json
+
+{
+    "description": "Write the web services"
+}
+
+###
+
+# Set 'complete' for specific item
+PATCH http://{{host}}/items/{{userid}}/{{timestamp}}
+Content-Type: application/json
+
+{
+    "complete": true
+}
+
+###
+
+# Delete item
+DELETE http://{{host}}/items/{{userid}}/{{timestamp}}

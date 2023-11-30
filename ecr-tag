@@ -1,0 +1,15 @@
+#/bin/bash
+
+if [ "$ECR_REPO" == "" ]
+then
+    echo "ECR_REPO is not set"
+    exit -1
+fi
+
+if [ $# -ne 1 ] || [ "$1" == "" ]
+then
+    echo "Usage: $0 image"
+    exit -1
+fi
+
+docker tag "$1" "$ECR_REPO/$1"

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$AWS_REGION" == "" ]
+then
+    echo "AWS_REGION is not set"
+    exit -1
+fi
+
+if [ "$ECR_REPO" == "" ]
+then
+    echo "ECR_REPO is not set"
+    exit -1
+fi
+
+aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO

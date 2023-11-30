@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$ECR_REPO" == "" ]
+then
+    echo "ECR_REPO is not set"
+    exit -1
+fi
+
+for var in "$@"
+do
+    docker push "$ECR_REPO/$var"
+done
